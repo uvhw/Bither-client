@@ -3,8 +3,8 @@
 const Client = require('./lib/client');
 
 class ElectrumClient extends Client {
-  constructor(port, host, protocol, options) {
-    super(port, host, protocol, options);
+  constructor(net, tls, port, host, protocol, options) {
+    super(net, tls, port, host, protocol, options);
     this.timeLastCall = 0;
   }
 

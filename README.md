@@ -19,15 +19,24 @@ Electrum Protocol Client for React Native
 
 ## usage
 
-Relies on `react-native-tcp` so it should be already installed and linked in RN project. `net` should be provided from outside, this library wont do `require('net')`.
-For RN it should be in `shim.js`:
+Relies on `react-native-tcp` so it should be already installed and linked in RN project. `net` & `tls` dependencies should be
+injected via constructor, this library won't do `require('net')`.
+For RN you can place it in `shim.js`:
 
 ```javascript
   global.net = require('react-native-tcp');
 ```
 
-For nodejs it should be provided before usage:
+For nodejs simply
 
 ```javascript
-  global.net = require('net');
+  const net = require('net');
+```
+
+and then
+
+```javascript
+  const client = new ElectrumClient(net, false, 50001, 'electrum1.bluewallet.io', 'tcp');
+  const ver = await client.initElectrum({ client: 'bluewallet', version: '1.4' });
+  const balance = await client.blockchainScripthash_getBalance('716decbe1660861c3d93906cb1d98ee68b154fd4d23aed9783859c1271b52a9c');
 ```
