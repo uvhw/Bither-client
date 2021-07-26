@@ -15,7 +15,7 @@ Electrum Protocol Client for React Native
 
 ## protocol spec
 
-* https://electrumx.readthedocs.io/en/latest/protocol.html
+* https://electrumx-spesmilo.readthedocs.io/en/latest/protocol.html
 
 ## usage
 
